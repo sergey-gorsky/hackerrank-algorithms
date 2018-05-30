@@ -1,5 +1,10 @@
 'use strict';
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                  Link to the problem                          *
+ * https://www.hackerrank.com/challenges/two-characters/problem  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 const fs = require('fs');
 
 process.stdin.resume();
