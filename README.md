@@ -1,6 +1,6 @@
 # hackerrank-algorithms
 
-Here are some solutions to hackerrank challenges that I want to show off
+Here are some of my HackerRank solutions
 
 | Challenge Title       | Links                | Comments             |
 | ----------------------|----------------------|----------------------|
