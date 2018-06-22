@@ -1,5 +1,3 @@
-# hackerrank-algorithms
-
 Here are some of my HackerRank solutions
 
 | Challenge Title       | Links                | Comments             |
