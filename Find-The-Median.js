@@ -42,7 +42,7 @@ function divideAndConquerHalf(arr, watch) {
             left.push(arr[i]) 
         } else if (arr[i] > arr[pivotIndex]) {
             right.push(arr[i])
-        } else (arr[i] === arr[pivotIndex]) {
+        } else if (arr[i] === arr[pivotIndex]) {
             mid.push(arr[i])
         }
         // In general each successive recursion will
