@@ -1,8 +1,8 @@
+'use strict';
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * https://www.hackerrank.com/challenges/divisible-sum-pairs/problem *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
- 
-'use strict';
 
 const fs = require('fs');
 
