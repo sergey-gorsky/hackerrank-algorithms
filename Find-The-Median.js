@@ -46,8 +46,9 @@ function divideAndConquerHalf(arr, watch) {
             mid.push(arr[i])
         }
         // In general each successive recursion will
-        // be less than half the size of n
-        // O(n) = O(n) + O(n/2) + O(n/4) + O(n/8) + ... = O(2n)
+        // be less than n by a factor of 
+        // O(n) = O(n) + O(n*3/4) + O(n*(3/4)^2) + O(n*(3/4)^3) + ... = O(4n)
+        // which for arrays with 10000 is significantly better than O(nlog(n))
     }
     if (left.length > watch) {
         sortedList = divideAndConquerHalf(left, watch)
