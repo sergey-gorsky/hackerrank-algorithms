@@ -3,6 +3,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * https://www.hackerrank.com/challenges/mars-exploration/problem  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 const fs = require('fs');
 
 process.stdin.resume();
