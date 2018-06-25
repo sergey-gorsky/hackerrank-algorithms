@@ -1,8 +1,8 @@
+'use strict';
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * https://www.hackerrank.com/challenges/the-birthday-bar/problem  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-'use strict';
 
 const fs = require('fs');
 
