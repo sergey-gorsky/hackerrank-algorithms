@@ -64,90 +64,46 @@ function divideAndConquerHalf(arr, watch) {
     // sorting the array we know where the median value will be located.
     // We can call the index of this location the 'watch' index. If we 
     // partition the values into three categories: higher, lower, and 
-    // equal to some pivot value then we can safely eliminate any ranges 
-    // that do not contain the watch index.
-    // In the diagrams below, the watch index is indicated by a 'W'
+    // equal to some pivot value then we know that if the pivot ends up
+    // to the left of the watch index 1) the median's value is greater
+    // than the pivot value 2) the median is somewhere to the right of
+    // the pivot so we can safely eliminate all values equal-to and less-
+    // than the pivot.
+    // In the diagrams below, the watch *index* is indicated by a 'W'
+    // In this implementation the watch index is used as the pivot.
     
-    // [#, #, #, #, #, #, #, #, #, W, #, #, #, #, #, #, #, #, #, #]
-    // |-------------------------------|--|-----------------------|
-    //      left                        mid         right
+    // before first partition:
+    // [31, 84, 17, 73, 67, 40, 79, 19, W:74, 22, 75, 69, 90, 84, 23, 38, 64]
+    // after first partition:  
+    // [31, 17, 73, 67, 40, 19, 22, 69,   23, 38, 64, 74, 84, 79, 75, 90, 84]
+    // |---------------------------------------------|--|-------------------|
+    //               left                             mid         right
+    // recurse into left
     
-    // [#, #, #, #, #, #, #, #, #, W, #]
-    // |-------|-----|-----------------|
-    //     left   mid    right
+    // [31, 17, 73, 67, 40, 19, 22, 69, W:23, 38, 64]
+    //
+    // [17, 19, 22, 23, 31, 73, 67, 40,   69, 38, 64]
+    // |-----------|--|-----------------------------|
+    //      left    mid           right
+    // recurse into right
     
-    //                [#, #, #, #, W, #]
-    //                |----|-----------|
-    //                  mid     right    
+    //                 [31, 73, 67, 40, W:69, 38, 64]
+    //
+    //                 [31, 67, 40, 38,   64, 69, 73]
+    //                 |---------------------|--|---|
+    //                        left            mid right
+    // recurse into left
     
-    //                      [#, #, W, #]
-    //                      |-|--|-----|
-    //                    left mid right    
+    //                 [31, 67, 40, 38, W:64]
+    //
+    //                 [31, 40, 38, 64,   67]
+    //                 |-----------|--|-----|
+    //                    left      mid  right
+    // solution found: 67
     
-    //                            [W, #]
-    //                            |-|--|
-    //                            mid right
+    // we can verify this by looking at the sorted array:
+    // [17, 19, 22, 23, 31, 38, 40, 64, W:67, 69, 73, 74, 75, 79, 84, 84, 90]
     
-    // Decision Logic:
-    // [#, #, #, #, #, #, #, P, #, W, #, #, #, #, #, #, #, #, #, #]
-    // |-------------------|---------------|-----------------------|
-    //      left                mid               right
-    // left.length <= watch && left.length + mid.length > watch 
-    // 7 <= 9 && 7 + 5 > 9
-    // all values in mid are the same and mid contains the median
-    // return an array with a single value: [arr[watch]]
-    // the value arr[watch] propogates back through the recursion chain.
-    
-    // [#, #, #, #, #, #, #, #, #, W, #, #, #, #, #, #, #, #, #, #]
-    // |--------------------------|-|-----------------------------|
-    //      left                  mid               right
-    // left.length <= watch && left.length + mid.length > watch 
-    // 9 <= 9 && 9 + 1 > 9
-    // return arr[watch]
-    
-    // [#, #, #, #, #, #, #, #, #, W, P, #, #, #, #, #, #, #, #, #]
-    // |-----------------------------|-|--------------------------|
-    //      left                     mid         right
-    // left.length > watch
-    // 10 > 9
-    // recurse with left
-
-    // [#, #, #, #, #, #, #, #, P, W, #, #, #, #, #, #, #, #, #, #]
-    // |-----------------------|-|--------------------------------|
-    //      left               mid         right
-    // left.length + mid.length <= watch
-    // 8 + 1 <= 9
-    // recurse with right, update the watch index to account for 
-    // the change after throwing out left and mid sections of the array
-    // old watch index = 9, subtract left.length and mid.length
-    // new watch index = 0
-    
-    // [#, #, #, #, #, #, #, #, #, W, #, #, #, #, #, #, #, #, #, P]
-    // |--------------------------------------------------------|-|
-    //      left                                                mid
-    // left.length > watch
-    // 19 < 9
-    // recurse with left
-    
-    // [P, #, #, #, #, #, #, #, #, W, #, #, #, #, #, #, #, #, #, #]
-    // |-|--------------------------------------------------------|
-    // mid                    right                  
-    // left.length + mid.length <= watch
-    // 0 + 1 <= 9
-    // recurse with right
-    // old watch index = 9
-    // new watch index = 8
-    
-    // [P, #, #, #, #, #, #, #, #, W]
-    // |--------------------------|-|
-    // mid                        right                  
-    // left.length + mid.length <= watch
-    // 0 + 5 <= 5
-    // recurse with right
-    // old watch index = 5
-    // new watch index = 0
-    // when recursing with an array of length 1, the single value is returned
-    // as the result and propogates back through the recursion chain.
 }
 
 function findMedian(arr) {
